@@ -124,5 +124,11 @@ namespace SimpleMVC4.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            _accountsRepository.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

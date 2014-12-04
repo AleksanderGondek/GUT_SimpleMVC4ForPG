@@ -1,4 +1,6 @@
 ﻿using System.Data.Entity.Migrations;
+using System.Linq;
+using SimpleMVC4.Models.Countries;
 using WebMatrix.WebData;
 
 namespace SimpleMVC4.Context
@@ -25,6 +27,35 @@ namespace SimpleMVC4.Context
         {
             if (!WebSecurity.UserExists("admin")) { WebSecurity.CreateUserAndAccount("admin", "admin"); }
             if (!WebSecurity.UserExists("user0")) { WebSecurity.CreateUserAndAccount("user0", "qwerty"); }
+        }
+
+        private void AddCountries(SimpleMvc4Context context)
+        {
+            if (context.CountryModels.Any())
+            {
+                return;
+            }
+
+            context.CountryModels.Add(new CountryModel
+            {
+                Name = @"United Kingdom of Great Britain and Northern Ireland",
+                TotalArea = 243610,
+                OfficialLanguage = @"English"
+            });
+
+            context.CountryModels.Add(new CountryModel
+            {
+                Name = @"Republic of Ireland",
+                TotalArea = 70273,
+                OfficialLanguage = @"Irish, English"
+            });
+
+            context.CountryModels.Add(new CountryModel
+            {
+                Name = @"French Republic",
+                TotalArea = 640679,
+                OfficialLanguage = @"French"
+            });
         }
     }
 }

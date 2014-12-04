@@ -198,8 +198,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\DatabaseInitializator.cs" />
-    <Compile Include="Context\ISimpleMVC4Context.cs" />
-    <Compile Include="Context\SimpleMVC4Context.cs" />
+    <Compile Include="Context\ISimpleMvc4Context.cs" />
+    <Compile Include="Context\SimpleMvc4Context.cs" />
+    <Compile Include="Context\SimpleMvc4ContextForScaffolding.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -211,9 +212,11 @@
     <Compile Include="Models\Accounts\ChangePasswordModel.cs" />
     <Compile Include="Models\Accounts\LoginModel.cs" />
     <Compile Include="Models\Accounts\RegisterModel.cs" />
+    <Compile Include="Models\Countries\CountryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountsRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\CountriesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

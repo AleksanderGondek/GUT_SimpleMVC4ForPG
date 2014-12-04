@@ -3,6 +3,7 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 using SimpleMVC4.Models.Accounts;
+using SimpleMVC4.Models.Countries;
 
 namespace SimpleMVC4.Context
 {
@@ -13,8 +14,10 @@ namespace SimpleMVC4.Context
         public SimpleMvc4Context(DbConnection existingConnection, bool ifOwnsConnection) : base(existingConnection, ifOwnsConnection) { }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<CountryModel> CountryModels { get; set; }
 
         IQueryable<UserProfile> ISimpleMvc4Context.UserProfiles { get { return UserProfiles.AsQueryable(); } }
+        IQueryable<CountryModel> ISimpleMvc4Context.CountryModels { get { return CountryModels.AsQueryable(); } }
 
         public T Attach<T>(T entity) where T : class
         {
