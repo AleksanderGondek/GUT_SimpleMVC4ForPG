@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace SimpleMVC4.Models.Countries
 {
@@ -13,7 +14,7 @@ namespace SimpleMVC4.Models.Countries
         [Required]
         //[Index(IsUnique=true)]
         [Display(Name = "Country Name")]
-        [RegularExpression(@"^[a-zA-Z.]{3,70}$", ErrorMessage = "Country should be at least 3 characters long and no more than 70 characters long")]
+        [RegularExpression(@"^[A-Za-z0-9\s]{1,70}$", ErrorMessage = "Country should be at least 3 characters long and no more than 70 characters long")]
         public string Name { get; set; }
         [Required]
         [Display(Name = "Country Total Area")]
@@ -24,6 +25,12 @@ namespace SimpleMVC4.Models.Countries
         [MinLength(4)]
         public string OfficialLanguage { get; set; }
 
-        public virtual ICollection<CountryModel> CountyModels { get; set; }
+        [NotMapped]
+        public string[] SelectedCountries { get; set; }
+        [NotMapped]
+        public IEnumerable<SelectListItem> AllCountries { get; set; }
+        
+        [Display(Name = "Country Neighbours")]
+        public virtual ICollection<CountryModel> CountryModels { get; set; }
     }
 }

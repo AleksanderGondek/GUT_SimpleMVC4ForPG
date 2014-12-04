@@ -38,12 +38,27 @@
             @Html.EditorFor(model => model.OfficialLanguage)
             @Html.ValidationMessageFor(model => model.OfficialLanguage)
         </div>
+        
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.CountryModels) <br />
+        </div>
+        <div class="display-field">
+            @Html.ListBoxFor(model => model.SelectedCountries, Model.AllCountries,
+            new { @class = "chosen", multiple = "multiple", style = "width: 350px;" })
+        </div>
 
         <p>
             <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
+
+<script type="text/javascript">
+   $(function () {
+       $(".chosen").chosen();
+       $(".chosen").trigger('chosen:updated');
+   });
+</script>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

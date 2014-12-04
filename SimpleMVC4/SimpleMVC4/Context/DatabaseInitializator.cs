@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using SimpleMVC4.Models.Countries;
 using WebMatrix.WebData;
@@ -17,6 +18,7 @@ namespace SimpleMVC4.Context
             AttachSimpleAuth();
             AddUsers();
             AddCountries(context);
+            AttachAllCountiresToUk(context);
         }
 
         private void AttachSimpleAuth()
@@ -57,6 +59,28 @@ namespace SimpleMVC4.Context
                 TotalArea = 640679,
                 OfficialLanguage = @"French"
             });
+
+            context.SaveChanges();
+        }
+
+        private void AttachAllCountiresToUk(SimpleMvc4Context context)
+        {
+            var uk = context.CountryModels.Single(x => x.Name.Equals("United Kingdom of Great Britain and Northern Ireland"));
+            if (uk.CountryModels == null)
+            {
+                uk.CountryModels = new List<CountryModel>();
+            }
+            else
+            {
+                uk.CountryModels.Clear();
+            }
+
+            foreach (var country in context.CountryModels.Where(x => !x.Name.Equals("United Kingdom of Great Britain and Northern Ireland")))
+            {
+                uk.CountryModels.Add(country);
+            }
+
+            context.SaveChanges();
         }
     }
 }

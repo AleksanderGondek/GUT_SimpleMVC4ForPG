@@ -39,5 +39,10 @@ namespace SimpleMVC4.Context
         {
             return Set<T>().AsQueryable();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CountryModel>().HasMany(m => m.CountryModels).WithMany();
+        } 
     }
 }

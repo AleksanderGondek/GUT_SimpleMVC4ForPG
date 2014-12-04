@@ -1,4 +1,5 @@
-﻿@model SimpleMVC4.Models.Countries.CountryModel
+﻿@using System.Web.Mvc.Html
+@model SimpleMVC4.Models.Countries.CountryModel
 
 @{
     ViewBag.Title = "Details";
@@ -10,26 +11,42 @@
     <legend>CountryModel</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Name)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TotalArea)
+        @Html.DisplayNameFor(model => model.TotalArea)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.TotalArea)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.OfficialLanguage)
+        @Html.DisplayNameFor(model => model.OfficialLanguage)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.OfficialLanguage)
     </div>
+    
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CountryModels) <br />
+    </div>
+    <div class="display-field">
+        @Html.ListBoxFor(model => model.SelectedCountries, Model.AllCountries,
+            new { @class = "chosen", multiple = "multiple", style = "width: 350px;" })
+    </div>
 </fieldset>
+
+<script type="text/javascript">
+   $(function () {
+       $(".chosen").chosen();
+       $(".chosen").trigger('chosen:updated');
+       $(".chosen").attr('disabled', true).trigger("chosen:updated");
+   });
+</script>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.CountryId }) |
     @Html.ActionLink("Back to List", "Index")

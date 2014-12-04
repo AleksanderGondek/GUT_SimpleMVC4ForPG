@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using Ninject.Infrastructure.Language;
 using SimpleMVC4.Models.Countries;
 using SimpleMVC4.Context;
 using SimpleMVC4.Repositories;
@@ -26,6 +28,10 @@ namespace SimpleMVC4.Controllers
             {
                 return HttpNotFound();
             }
+
+            countrymodel.AllCountries = _countiresRepository.GetAllSelectableCountries();
+            countrymodel.SelectedCountries = countrymodel.CountryModels.Select(x => x.CountryId.ToString()).ToArray();
+
             return View(countrymodel);
         }
 
@@ -54,6 +60,8 @@ namespace SimpleMVC4.Controllers
             {
                 return HttpNotFound();
             }
+            countrymodel.AllCountries = _countiresRepository.GetAllSelectableCountries();
+            countrymodel.SelectedCountries = countrymodel.CountryModels.Select(x => x.CountryId.ToString()).ToArray();
             return View(countrymodel);
         }
 

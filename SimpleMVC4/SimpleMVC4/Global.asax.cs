@@ -23,9 +23,9 @@ namespace SimpleMVC4
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<SimpleMvc4Context, DatabaseInitializator>());
 
             //Eager-ish start
-            //var db = new SimpleMvc4Context();
-           // db.Database.Initialize(false);
-            //db.UserProfiles.Find(1);
+            var db = new SimpleMvc4Context();
+            db.Database.Initialize(false);
+            db.UserProfiles.Find(1);
         }
 
         protected override IKernel CreateKernel()
