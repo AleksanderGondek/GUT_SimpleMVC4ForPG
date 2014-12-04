@@ -19,56 +19,53 @@ namespace SimpleMVC4.Repositories
         {
             if (!DatabaseContext.CountryModels.Any(x => x.Name.Equals(entity.Name)))
             {
-                return base.Save(entity);
+                if (entity.SelectedCountries != null && entity.SelectedCountries.Any())
+                {
+                    var ids = entity.SelectedCountries.Select(int.Parse).ToList();
+                    if (ids.Any())
+                    {
+                        entity.CountryModels = new List<CountryModel>();
+                        foreach (var id in ids)
+                        {
+                            entity.CountryModels.Add(DatabaseContext.CountryModels.Single(x => x.CountryId.Equals(id)));
+                        }
+                    }
+                }
             }
-
-            return false;
+            return base.Save(entity);
         }
 
         public override void Update(CountryModel entity)
         {
-            DatabaseContext.Attach(entity);
-            DatabaseContext.SaveChanges();
-            
-            var ids = entity.SelectedCountries.Select(int.Parse).ToList();
-            if (ids.Any())
+            if (entity.SelectedCountries == null || !entity.SelectedCountries.Any())
             {
-                if (entity.CountryModels == null)
+                var myEntitye = DatabaseContext.CountryModels.Single(x => x.CountryId.Equals(entity.CountryId));
+                if (myEntitye.CountryModels == null)
                 {
-                    entity.CountryModels = new List<CountryModel>();
+                    myEntitye.CountryModels = new List<CountryModel>();
                 }
-                entity.CountryModels.Clear();
-                foreach (var id in ids)
-                {
-                   entity.CountryModels.Add(DatabaseContext.CountryModels.Single(x => x.CountryId.Equals(id)));
-                }
-
-                DatabaseContext.Attach(entity);
+                myEntitye.CountryModels.Clear();
+                DatabaseContext.Attach(myEntitye);
                 DatabaseContext.SaveChanges();
+                return;
             }
 
-        }
+            var ids = entity.SelectedCountries.Select(int.Parse).ToList();
+            if (!ids.Any()) return;
 
-        public CountryModel AddCountriesToModel(CountryModel model)
-        {
-            var ids = model.SelectedCountries.Select(int.Parse).ToList();
-            var countriesToBeAdded = DatabaseContext.CountryModels.Where(x => ids.Contains(x.CountryId));
-
-            if (model.CountryModels != null)
+            var myEntity = DatabaseContext.CountryModels.Single(x => x.CountryId.Equals(entity.CountryId));
+            if (myEntity.CountryModels == null)
             {
-                model.CountryModels.Clear();
+                myEntity.CountryModels = new List<CountryModel>();
             }
-            else
+            myEntity.CountryModels.Clear();
+            foreach (var id in ids)
             {
-                model.CountryModels = new List<CountryModel>();
+                myEntity.CountryModels.Add(DatabaseContext.CountryModels.Single(x => x.CountryId.Equals(id)));
             }
 
-            foreach (var country in countriesToBeAdded)
-            {
-                model.CountryModels.Add(country);
-            }
-
-            return model;
+            DatabaseContext.Attach(myEntity);
+            DatabaseContext.SaveChanges();
         }
 
         public IEnumerable<SelectListItem> GetAllSelectableCountries()

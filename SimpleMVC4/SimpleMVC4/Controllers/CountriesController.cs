@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Ninject.Infrastructure.Language;
 using SimpleMVC4.Models.Countries;
 using SimpleMVC4.Context;
 using SimpleMVC4.Repositories;
@@ -37,6 +36,7 @@ namespace SimpleMVC4.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.AllCountries = _countiresRepository.GetAllSelectableCountries();
             return View();
         }
 
