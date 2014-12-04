@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVC4", "SimpleMVC4\SimpleMVC4.csproj", "{5F29C150-22E1-4930-896C-1C048B994359}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMVC4.Tests", "SimpleMVC4.Tests\SimpleMVC4.Tests.csproj", "{3ABCF145-BDFD-4491-ADD0-399686C2F811}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F29C150-22E1-4930-896C-1C048B994359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F29C150-22E1-4930-896C-1C048B994359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F29C150-22E1-4930-896C-1C048B994359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F29C150-22E1-4930-896C-1C048B994359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABCF145-BDFD-4491-ADD0-399686C2F811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABCF145-BDFD-4491-ADD0-399686C2F811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABCF145-BDFD-4491-ADD0-399686C2F811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABCF145-BDFD-4491-ADD0-399686C2F811}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
