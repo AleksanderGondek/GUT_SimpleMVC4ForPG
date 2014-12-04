@@ -1,0 +1,36 @@
+﻿@model SimpleMVC4.Models.Countries.CountryModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CountryModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TotalArea)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalArea)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OfficialLanguage)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OfficialLanguage)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CountryId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

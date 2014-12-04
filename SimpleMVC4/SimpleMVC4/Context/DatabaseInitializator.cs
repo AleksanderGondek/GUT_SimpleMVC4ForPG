@@ -16,6 +16,7 @@ namespace SimpleMVC4.Context
         {
             AttachSimpleAuth();
             AddUsers();
+            AddCountries(context);
         }
 
         private void AttachSimpleAuth()
