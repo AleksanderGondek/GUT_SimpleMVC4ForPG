@@ -8,7 +8,7 @@
 
 <fieldset>
     <legend>FileModel</legend>
-
+    <img src="@Url.Action("GetImage","Image", new { id = Model.FileId})" />
     <div class="display-label">
          @Html.DisplayNameFor(model => model.FileName)
     </div>

@@ -12,7 +12,7 @@ namespace SimpleMVC4.Controllers
             {
                 return Json("error message", JsonRequestBehavior.AllowGet);
             }
-            if (FileName.Contains(@"Image"))
+            if (FileName.Equals(@"Image") || FileName.Equals(@"NotImage") || FileName.Equals(@"Something"))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }

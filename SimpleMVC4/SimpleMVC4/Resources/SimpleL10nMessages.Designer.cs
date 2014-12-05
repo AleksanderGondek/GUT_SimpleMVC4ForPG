@@ -61,11 +61,29 @@ namespace SimpleMVC4.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eror Message!.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Random.
         /// </summary>
         public static string HelloWorld {
             get {
                 return ResourceManager.GetString("HelloWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lorem ipsum ipsum lorem.
+        /// </summary>
+        public static string SomeText {
+            get {
+                return ResourceManager.GetString("SomeText", resourceCulture);
             }
         }
     }

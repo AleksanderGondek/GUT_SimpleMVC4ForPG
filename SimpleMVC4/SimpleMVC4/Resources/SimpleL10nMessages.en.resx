@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Error" xml:space="preserve">
+    <value>English Error!</value>
+  </data>
   <data name="HelloWorld" xml:space="preserve">
     <value>Hello!, world.</value>
+  </data>
+  <data name="SomeText" xml:space="preserve">
+    <value>English lorem ipsum !</value>
   </data>
 </root>

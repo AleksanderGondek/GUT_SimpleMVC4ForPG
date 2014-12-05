@@ -22,7 +22,7 @@ namespace SimpleMVC4.Models.Countries
         public int TotalArea { get; set; }
         [Required]
         [Display(Name = "Country Offical Language")]
-        [MinLength(4)]
+        [MinLength(4, ErrorMessageResourceName="Error",ErrorMessageResourceType=typeof(SimpleMVC4.Resources.SimpleL10nMessages))]
         public string OfficialLanguage { get; set; }
 
         [NotMapped]
