@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using SimpleMVC4.Models.Accounts;
 using SimpleMVC4.Models.Countries;
+using SimpleMVC4.Models.Files;
 
 namespace SimpleMVC4.Context
 {
@@ -15,9 +16,11 @@ namespace SimpleMVC4.Context
 
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<CountryModel> CountryModels { get; set; }
+        public DbSet<FileModel> FileModels { get; set; }
 
         IQueryable<UserProfile> ISimpleMvc4Context.UserProfiles { get { return UserProfiles.AsQueryable(); } }
         IQueryable<CountryModel> ISimpleMvc4Context.CountryModels { get { return CountryModels.AsQueryable(); } }
+        IQueryable<FileModel> ISimpleMvc4Context.FileModels { get { return FileModels.AsQueryable(); } } 
 
         public T Attach<T>(T entity) where T : class
         {
