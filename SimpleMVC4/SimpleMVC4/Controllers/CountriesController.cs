@@ -44,6 +44,10 @@ namespace SimpleMVC4.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CountryModel countrymodel)
         {
+            if (@"Slask".Equals(countrymodel.Name))
+            {
+                ModelState.AddModelError("Name", "Slask is not a country");
+            }
             if (ModelState.IsValid)
             {
                 _countiresRepository.Save(countrymodel);
