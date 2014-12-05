@@ -9,7 +9,7 @@
 
 <fieldset>
     <legend>CountryModel</legend>
-
+    <img src="@Url.Action("GetImage","Countries", new { id = Model.CountryId})" />
     <div class="display-label">
         @Html.DisplayNameFor(model => model.Name)
     </div>

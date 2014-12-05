@@ -25,6 +25,15 @@ namespace SimpleMVC4.Models.Countries
         [MinLength(4, ErrorMessageResourceName="Error",ErrorMessageResourceType=typeof(SimpleMVC4.Resources.SimpleL10nMessages))]
         public string OfficialLanguage { get; set; }
 
+        //Image
+        [Display(Name = "File Name")]
+        [Remote("FileName", "Validation")]
+        public string FileName { get; set; }
+        [Display(Name = "Content Type")]
+        public string ContentType { get; set; }
+        public byte[] FileBytes { get; set; }
+
+
         [NotMapped]
         public string[] SelectedCountries { get; set; }
         [NotMapped]

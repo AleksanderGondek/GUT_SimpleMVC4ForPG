@@ -40,7 +40,8 @@ namespace SimpleMVC4.Controllers
         {
             @ViewBag.Id = value;
             return View();
-        }
+        }
+
 
         protected override void Dispose(bool disposing)
         {

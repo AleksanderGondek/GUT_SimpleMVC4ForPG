@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Web;
 using System.Web.Mvc;
+using SimpleMVC4.Helpers;
 using SimpleMVC4.Models.Countries;
 using SimpleMVC4.Context;
 using SimpleMVC4.Repositories;
@@ -40,16 +42,31 @@ namespace SimpleMVC4.Controllers
             return View();
         }
 
+        public ActionResult GetImage(int id)
+        {
+            var filemodel = _countiresRepository.Find(id);
+            if (filemodel == null)
+            {
+                return HttpNotFound();
+            }
+
+            return File(filemodel.FileBytes, filemodel.ContentType, filemodel.FileName);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CountryModel countrymodel)
+        public ActionResult Create(CountryModel countrymodel, HttpPostedFileBase fileUpload)
         {
             if (@"Slask".Equals(countrymodel.Name))
             {
                 ModelState.AddModelError("Name", "Slask is not a country");
             }
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && fileUpload != null)
             {
+                countrymodel.FileName = fileUpload.FileName;
+                countrymodel.FileBytes = FilesControllerHelper.ConvertUploadedFileToBytes(fileUpload);
+                countrymodel.ContentType = fileUpload.ContentType;
+
                 _countiresRepository.Save(countrymodel);
                 return RedirectToAction("Index");
             }

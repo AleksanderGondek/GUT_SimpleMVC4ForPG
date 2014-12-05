@@ -12,7 +12,7 @@
 
     <fieldset>
         <legend>CountryModel</legend>
-
+        <img src="@Url.Action("GetImage","Countries", new { id = Model.CountryId})" />
         @Html.HiddenFor(model => model.CountryId)
 
         <div class="editor-label">
