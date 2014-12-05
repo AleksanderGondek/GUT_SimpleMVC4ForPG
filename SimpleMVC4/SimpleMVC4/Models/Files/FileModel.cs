@@ -11,6 +11,8 @@ namespace SimpleMVC4.Models.Files
         public int FileId { get; set; }
         [Display(Name = "File Name")]
         public string FileName { get; set; }
+        [Display(Name = "Content Type")]
+        public string ContentType { get; set; }
         public byte[] FileBytes { get; set; }
     }
 }

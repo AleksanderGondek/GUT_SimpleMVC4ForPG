@@ -1,0 +1,29 @@
+﻿@model SimpleMVC4.Models.Files.FileModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FileModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FileName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FileName)
+    </div>
+    
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ContentType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContentType)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Download", "Download", new { id = Model.FileId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
