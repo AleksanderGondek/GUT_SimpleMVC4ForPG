@@ -8,7 +8,7 @@ using SimpleMVC4.Repositories;
 
 namespace SimpleMVC4.Controllers
 {
-    public class CountriesController : Controller
+    public class CountriesController : AsyncController
     {
         private readonly CountriesRepository _countiresRepository;
 
@@ -17,10 +17,23 @@ namespace SimpleMVC4.Controllers
             _countiresRepository = new CountriesRepository(databaseContext);
         }
 
-        public ActionResult Index()
+        public void IndexAsync(int id = 0)
+        {
+            AsyncManager.OutstandingOperations.Increment();
+            var t = new System.Timers.Timer { AutoReset = false, Interval = 4000 };
+            t.Elapsed += (evt, args) => AsyncManager.OutstandingOperations.Decrement();
+            t.Start();
+        }
+
+        public ActionResult IndexCompleted(int value = 0)
         {
             return View(_countiresRepository.All);
         }
+        
+        //public ActionResult Index()
+        //{
+        //    return View(_countiresRepository.All);
+        //}
 
         public ActionResult Details(int id = 0)
         {
